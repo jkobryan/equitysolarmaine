@@ -3,260 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equity Solar | Maine's Turnkey Solar Development & Community Solutions</title>
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Equity Solar Maine | Affordable Energy for Maine Families</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --navy: #072032; 
-            --navy-light: #0d2c45;
-            --gold: #FACD1B; 
-            --gold-hover: #e5ba15;
+            --navy: #001F3F;
+            --gold: #D4AF37;
             --white: #FFFFFF;
-            --gray-bg: #F7FBFF;
-            --text-main: #333333;
-            --text-light: #666666;
+            --light-gray: #f4f7f6;
+            --text-dark: #333;
         }
 
-        /* Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-            background-color: var(--white);
-        }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        a { text-decoration: none; transition: 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { color: var(--text-dark); line-height: 1.6; }
 
-        /* Navigation */
+        /* Header & Nav */
         header {
-            position: fixed;
-            top: 0; width: 100%;
             background: var(--white);
-            height: 90px;
+            padding: 0.5rem 5%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 0 5%;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo-img { height: 50px; width: auto; }
-        nav ul { display: flex; gap: 30px; align-items: center; list-style: none; }
-        nav a { color: var(--navy); font-weight: 600; font-size: 0.95rem; }
+        .logo img { height: 50px; width: auto; display: block; }
+        nav a { text-decoration: none; color: var(--navy); margin-left: 2rem; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: var(--gold); }
-        
-        .header-cta {
-            background: var(--gold);
-            color: var(--navy);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-        }
 
         /* Hero Section */
         .hero {
-            height: 85vh;
-            margin-top: 90px;
-            background: linear-gradient(rgba(7, 32, 50, 0.75), rgba(7, 32, 50, 0.75)), 
+            height: 80vh;
+            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), 
                         url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1920') no-repeat center center/cover;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
             color: var(--white);
             padding: 0 10%;
+            margin-top: 66px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 35px; font-weight: 300; max-width: 800px; margin-left: auto; margin-right: auto;}
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; max-width: 800px; margin-bottom: 2rem; }
+        .btn { background: var(--gold); color: var(--white); padding: 1rem 2rem; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; text-decoration: none; transition: background 0.3s; display: inline-block; font-weight: 600; }
+        .btn:hover { background: #b8962e; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        /* Mission Section */
-        section { padding: 100px 10%; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; color: var(--navy); position: relative; padding-bottom: 15px; }
-        .section-title h2::after { content: ''; width: 60px; height: 4px; background: var(--gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        /* Sections */
+        section { padding: 5rem 10%; }
+        .section-title { text-align: center; margin-bottom: 3rem; color: var(--navy); }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .section-title .underline { width: 60px; height: 4px; background: var(--gold); margin: 0 auto; }
 
-        .mission-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: flex-start; }
-        .stat-box { background: var(--gray-bg); padding: 30px; border-left: 6px solid var(--gold); margin-bottom: 20px; }
-        .stat-box h3 { font-size: 2.5rem; color: var(--navy); margin-bottom: 5px; }
-        .energy-burden-img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 30px; }
-
-        /* Solutions Grid */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 40px; border: 1px solid #eee; transition: 0.4s; border-radius: 8px; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .service-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
-
-        /* Expertise Section */
-        .expertise-section { background: var(--navy); color: var(--white); }
-        .expertise-section .section-title h2 { color: var(--white); }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .exp-image { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-
-        /* Form Integration */
-        .contact-section { background: var(--gray-bg); }
-        .form-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 50px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .proposal-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .proposal-form input, .proposal-form textarea { padding: 15px; border: 1px solid #ddd; border-radius: 5px; width: 100%; font-size: 1rem; }
-        .proposal-form textarea { grid-column: span 2; }
-        .btn-submit { grid-column: span 2; background: var(--navy); color: var(--white); padding: 18px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-submit:hover { background: var(--gold); color: var(--navy); }
-
-        /* Success Handling */
-        #status-success { display: none; text-align: center; font-size: 2.5rem; font-weight: 700; color: var(--navy); padding: 50px 0; }
-        #status-error { display: none; color: #e74c3c; text-align: center; margin-top: 15px; }
-
-        footer { background: #0D161C; color: var(--white); padding: 50px 10% 30px; text-align: center; font-size: 0.9rem; }
-
-        @media (max-width: 991px) {
-            .mission-grid, .proposal-form { grid-template-columns: 1fr; }
-            .btn-submit { grid-column: span 1; }
-            header nav { display: none; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="branding">
-            <img src="EquitySolarAndLogo.png" alt="Equity Solar Logo" class="logo-img">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#contact" class="header-cta">Inquire Now</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Fair Energy for Every Mainer</h1>
-            <p>We develop community solar portfolios and turnkey solutions that deliver guaranteed savings to Maine families and housing authorities.</p>
-            <a href="#contact" class="header-cta" style="padding: 18px 40px; display: inline-block;">Start Saving Today</a>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="mission-grid">
-            <div class="mission-text">
-                <div class="section-title" style="text-align: left;">
-                    <h2 style="left: 0; transform: none;">The Mission</h2>
-                </div>
-                <p>Maine is facing an unprecedented energy affordability crisis. Electricity is a necessity, not a luxury, yet utility rates continue to climb as a share of household expenditures, especially among lower-income households.</p>
-                <br>
-                <p><strong>Equity Solar</strong> was founded to help correct that disparity. Using community-based solar development and Maine's Net Energy Billing program, we provide low-priced, renewable energy to renters, resident-owned communities, and housing authorities.</p>
-                <img src="StatesHouseholdEnergy.png" alt="Energy Burden Graph" class="energy-burden-img">
-            </div>
-            <div class="mission-stats">
-                <div class="stat-box">
-                    <h3>70%</h3>
-                    <p>of Mainers report struggling to pay their electricity bills.</p>
-                    <small>— Commissioner Patrick Scully, MPUC</small>
-                </div>
-                <div class="stat-box">
-                    <h3>68%</h3>
-                    <p>Increase in CMP electricity rates over the last five years.</p>
-                </div>
-                <div class="stat-box">
-                    <h3>40.4%</h3>
-                    <p>Energy burden for LMI households in Maine—#2 worst in the nation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="solutions" style="background: var(--gray-bg);">
-        <div class="section-title">
-            <h2>Our Solar Solutions</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-layer-group"></i>
-                <h3>Community Solar</h3>
-                <p>Guaranteed savings on your CMP bill without the need for rooftop panel installations.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <h3>Turnkey Development</h3>
-                <p>Full-service site acquisition, engineering, and grid interconnection expertise.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-users-gear"></i>
-                <h3>Energy Justice</h3>
-                <p>Specialized solutions for resident-owned communities and housing authorities.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="expertise" class="expertise-section">
-        <div class="section-title">
-            <h2>Technical Expertise</h2>
-        </div>
-        <div class="expertise-grid">
-            <div class="exp-item">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600" class="exp-image" alt="Grid Analysis">
-                <h4 style="color: var(--gold); text-align: center;">Grid Analysis</h4>
-            </div>
-            <div class="exp-item">
-                <img src="https://images.unsplash.com/photo-1621905252507-b35242fdb836?q=80&w=600" class="exp-image" alt="Strategic Design">
-                <h4 style="color: var(--gold); text-align: center;">Strategic Design</h4>
-            </div>
-            <div class="exp-item">
-                <img src="https://images.unsplash.com/photo-1454165833767-027eeed1b68e?q=80&w=600" class="exp-image" alt="Financial Modeling">
-                <h4 style="color: var(--gold); text-align: center;">Financial Modeling</h4>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div id="form-wrapper" class="form-container">
-            <div id="form-header" class="section-title">
-                <h2>Contact Our Team</h2>
-                <p>Find out how much your family can save per month.</p>
-            </div>
-
-            <form id="my-form" class="proposal-form">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phone" placeholder="Phone Number" required>
-                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required>
-                <textarea name="message" rows="5" placeholder="How can we help you?"></textarea>
-                
-                <button type="submit" id="submit-btn" class="btn-submit">Send Inquiry</button>
-            </form>
-            
-            <div id="status-success">Message Sent</div>
-            <div id="status-error">Oops! There was a problem. Please try again.</div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Equity Solar Maine. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Formspree Scripts -->
-    <script>
-      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-      formspree('initForm', { 
-        formElement: '#my-form', 
-        formId: 'xpqnqryn',
-        onSuccess: function() {
-            document.getElementById('my-form').style.display = 'none';
-            document.getElementById('form-header').style.display = 'none';
-            document.getElementById('status-success').style.display = 'block';
-        }
-      });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-
-</body>
-</html>
+        /* About Section */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: flex-start; }
+        .stat-card { background: var(--light-gray); padding: 2rem; border-left: 5px solid var(--gold); margin-bottom: 1.5rem; }
