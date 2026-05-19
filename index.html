@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equity Solar Maine | Affordable Energy for Maine Families</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -76,7 +77,7 @@
         /* Contact Form Container */
         .proposal-container { background: var(--navy); color: var(--white); border-radius: 10px; padding: 3rem; min-height: 400px; display: flex; flex-direction: column; justify-content: center; }
         .proposal-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .proposal-form input, .proposal-form textarea { padding: 1rem; border-radius: 5px; border: none; width: 100%; font-size: 1rem; }
+        .proposal-form input, .proposal-form textarea { padding: 1rem; border-radius: 5px; border: none; width: 100%; font-size: 1rem; color: var(--text-dark); }
         .proposal-form textarea { grid-column: span 2; }
         .proposal-form button { grid-column: span 2; }
 
@@ -87,7 +88,7 @@
             border-radius: 5px; 
             text-align: center; 
             grid-column: span 2;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--gold);
         }
@@ -195,40 +196,33 @@
                 <div class="underline"></div>
             </div>
 
-<section id="contact" class="contact-section">
-        <div id="form-wrapper" class="form-container">
-            <div id="form-header" class="section-title">
-                <h2>Contact Our Team</h2>
-                <p>Find out how much your family can save per month.</p>
-            </div>
-
             <form id="my-form" class="proposal-form">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phone" placeholder="Phone Number" required>
-                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required>
-                <textarea name="message" rows="5" placeholder="How can we help you?"></textarea>
+                <input type="text" name="name" placeholder="Full Name" required data-fs-field>
+                <input type="email" name="email" placeholder="Email Address" required data-fs-field>
+                <input type="text" name="phone" placeholder="Phone Number" required data-fs-field>
+                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required data-fs-field>
+                <textarea name="message" rows="4" placeholder="How can we help you?" data-fs-field></textarea>
                 
-                <button type="submit" id="submit-btn" class="btn-submit">Send Inquiry</button>
+                <button type="submit" class="btn" data-fs-submit-btn>Inquire Now</button>
             </form>
             
-            <div id="status-success">Message Sent</div>
-            <div id="status-error">Oops! There was a problem. Please try again.</div>
+            <div id="status-success" data-fs-success>Message Sent</div>
+            <div id="status-error" data-fs-error>Oops! There was a problem. Please check the fields and try again.</div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Equity Solar Maine. All Rights Reserved.</p>
+        <p>&copy; 2026 Equity Solar Maine. All rights reserved.</p>
+        <p>Serving the families of the Pine Tree State.</p>
     </footer>
 
-    <!-- FORMSPREE AJAX SCRIPTS -->
     <script>
       window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
       formspree('initForm', { 
         formElement: '#my-form', 
         formId: 'xpqnqryn',
         onSuccess: function() {
-            // Hide the form and header, show the large "Message Sent" text
+            // Hide the form and header elements, display large centered success response text
             document.getElementById('my-form').style.display = 'none';
             document.getElementById('form-header').style.display = 'none';
             const successMsg = document.getElementById('status-success');
