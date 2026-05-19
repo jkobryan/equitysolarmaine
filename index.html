@@ -217,18 +217,16 @@
         <p>Serving the families of the Pine Tree State.</p>
     </footer>
 
-    <!-- FORMSPREE AJAX SCRIPTS -->
+    <!-- Formspree Scripts -->
     <script>
       window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
       formspree('initForm', { 
         formElement: '#my-form', 
         formId: 'xpqnqryn',
         onSuccess: function() {
-            // Hide the form and header, show the large "Message Sent" text
             document.getElementById('my-form').style.display = 'none';
             document.getElementById('form-header').style.display = 'none';
-            const successMsg = document.getElementById('status-success');
-            successMsg.style.display = 'block';
+            document.getElementById('status-success').style.display = 'block';
         }
       });
     </script>
