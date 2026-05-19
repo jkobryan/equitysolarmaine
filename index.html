@@ -151,18 +151,23 @@
         </div>
     </section>
 
-    <section id="proposal">
-        <div class="proposal-container">
-            <div class="section-title" style="color: white;">
-                <h2 style="color: white;">Contact Our Team</h2>
+    <section id=\"proposal\">
+        <div class=\"proposal-container\">
+            <div class=\"section-title\" style=\"color: white;\">\n                <h2 style=\"color: white;\">Contact Our Team</h2>
                 <p>Find out how much your family can save per month.</p>
-                <div class="underline"></div>
+                <div class=\"underline\"></div>
             </div>
-            <form id="contact-form" class="proposal-form" action="https://formspree.io/f/xpqnqryn" method="POST">
-                <input type="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Phone Number" required>
-                <input type="text" placeholder="Utility Provider (CMP)" required>
-                <textarea rows="4" placeholder="How can we help you?"></textarea>
+
+            <div id=\"success-notification\" style=\"display: none; background-color: #2ec4b6; color: white; padding: 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; font-weight: bold;\">
+                <i class=\"fas fa-check-circle\"></i> Message sent successfully! We will contact you shortly.
+            </div>
+
+            <form id=\"contact-form\" class=\"proposal-form\" action=\"https://formspree.io/f/xpqnqryn\" method=\"POST\">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required>
+                <textarea rows="4" name="message" placeholder="How can we help you?"></textarea>
                 <button type="submit" class="btn">Inquire Now</button>
             </form>
         </div>
@@ -173,43 +178,40 @@
         <p>Serving the families of the Pine Tree State.</p>
     </footer>
 <script>
-    const form = document.getElementById("contact-form");
-    const notification = document.getElementById("success-notification");
+        const form = document.getElementById("contact-form");
+        const notification = document.getElementById("success-notification");
 
-    form.addEventListener("submit", async function(event) {
-        event.preventDefault(); // This stops the standard page redirect completely
-        
-        // Package the data into a clean JSON object Formspree loves
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData.entries());
-        const json = JSON.stringify(object);
-        
-        try {
-            const response = await fetch(form.action, {
-                method: "POST",
-                body: json,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            });
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); // Stop standard redirect
             
-            if (response.ok) {
-                // Show your professional custom success message
-                notification.style.display = "block";
-                form.reset(); // Empties the input fields
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData.entries());
+            const json = JSON.stringify(object);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: json,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Keep the box visible for 5 seconds, then hide it smoothly
-                setTimeout(() => {
-                    notification.style.display = "none";
-                }, 5000);
-            } else {
-                alert("Oops! There was a problem submitting your form. Please try again.");
+                if (response.ok) {
+                    notification.style.display = "block";
+                    form.reset(); // Clear input boxes
+                    
+                    setTimeout(() => {
+                        notification.style.display = "none";
+                    }, 5000);
+                } else {
+                    alert("Oops! There was a problem submitting your form. Please try again.");
+                }
+            } catch (error) {
+                alert("Oops! There was a problem connecting to the server.");
             }
-        } catch (error) {
-            alert("Oops! There was a problem connecting to the server.");
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
