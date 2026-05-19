@@ -195,42 +195,40 @@
                 <div class="underline"></div>
             </div>
 
-            <section id="contact" class="contact-section">
-        <div id="form-wrapper" class="form-container">
-            <div id="form-header" class="section-title">
-                <h2>Contact Our Team</h2>
-                <p>Find out how much your family can save per month.</p>
-            </div>
-
             <form id="my-form" class="proposal-form">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phone" placeholder="Phone Number" required>
-                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required>
-                <textarea name="message" rows="5" placeholder="How can we help you?"></textarea>
+                <input type="text" name="name" placeholder="Full Name" required data-fs-field>
+                <input type="email" name="email" placeholder="Email Address" required data-fs-field>
+                <input type="text" name="phone" placeholder="Phone Number" required data-fs-field>
+                <input type="text" name="utility" placeholder="Utility Provider (CMP)" required data-fs-field>
+                <textarea name="message" rows="4" placeholder="How can we help you?" data-fs-field></textarea>
                 
-                <button type="submit" id="submit-btn" class="btn-submit">Send Inquiry</button>
+                <button type="submit" class="btn" data-fs-submit-btn>Inquire Now</button>
             </form>
             
-            <div id="status-success">Message Sent</div>
-            <div id="status-error">Oops! There was a problem. Please try again.</div>
+            <!-- Hidden Success Message -->
+            <div id="status-success" data-fs-success>Message Sent</div>
+            <!-- Hidden Error Message -->
+            <div id="status-error" data-fs-error>Oops! There was a problem. Please check the fields and try again.</div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Equity Solar Maine. All Rights Reserved.</p>
+        <p>&copy; 2024 Equity Solar Maine. All rights reserved.</p>
+        <p>Serving the families of the Pine Tree State.</p>
     </footer>
 
-    <!-- Formspree Scripts -->
+    <!-- FORMSPREE AJAX SCRIPTS -->
     <script>
       window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
       formspree('initForm', { 
         formElement: '#my-form', 
         formId: 'xpqnqryn',
         onSuccess: function() {
+            // Hide the form and header, show the large "Message Sent" text
             document.getElementById('my-form').style.display = 'none';
             document.getElementById('form-header').style.display = 'none';
-            document.getElementById('status-success').style.display = 'block';
+            const successMsg = document.getElementById('status-success');
+            successMsg.style.display = 'block';
         }
       });
     </script>
