@@ -158,7 +158,7 @@
                 <p>Find out how much your family can save per month.</p>
                 <div class="underline"></div>
             </div>
-            <form class="proposal-form" action="https://formspree.io/f/xpqnqryn" method="POST">
+            <form id="contact-form" class="proposal-form" action="https://formspree.io/f/xpqnqryn" method="POST">
                 <input type="text" placeholder="Full Name" required>
                 <input type="email" placeholder="Email Address" required>
                 <input type="text" placeholder="Phone Number" required>
@@ -173,6 +173,40 @@
         <p>&copy; 2024 Equity Solar Maine. All rights reserved.</p>
         <p>Serving the families of the Pine Tree State.</p>
     </footer>
+<script>
+    const form = document.getElementById("contact-form");
+    const notification = document.getElementById("success-notification");
 
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault(); // Prevents the page from redirecting to Formspree
+        
+        const data = new FormData(event.target);
+        
+        try {
+            const response = await fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Show the notification
+                notification.style.display = "block";
+                form.reset(); // Clears the form fields
+                
+                // Hide the notification automatically after 5 seconds
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 5000);
+            } else {
+                alert("Oops! There was a problem submitting your form. Please try again.");
+            }
+        } catch (error) {
+            alert("Oops! There was a problem connecting to the server.");
+        }
+    });
+</script>
 </body>
 </html>
